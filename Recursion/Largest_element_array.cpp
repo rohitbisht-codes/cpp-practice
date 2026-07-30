@@ -4,14 +4,16 @@ int largestarray(int n, int arr[])
 {
     if (n==1)
     {
-        return arr[n];
+        return arr[n-1];
     }
-    int largest = arr[0];
-    if (largest>arr[n])
+    int largest = largestarray(n - 1, arr);
+    if (largest>arr[n-1])
     {
-        return largestarray(n,arr);
+        return largest;
+    } 
+    else{
+        return arr[n-1];
     }
-    return 1;
 }
 int main()
 {
@@ -24,5 +26,5 @@ int main()
     {
         cin>>arr[i];
     }
-    
+    cout<<"larges element is"<<largestarray(n,arr);
 }
